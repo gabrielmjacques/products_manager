@@ -1,6 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 
+import database
+
+conn = database.DBConnect()
+
 root = Tk()
 root.title('Product Manager')
 
