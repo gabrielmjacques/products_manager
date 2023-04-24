@@ -17,6 +17,7 @@ add_btn['command'] = lambda: database.AddProduct(conn, treeview)
 add_btn.grid(column=0, row=0)
 
 alt_btn = ttk.Button(buttons_frame, text='Alterar')
+alt_btn['command'] = lambda: database.AltProduct(conn, treeview)
 alt_btn.grid(column=0, row=1)
 
 rem_btn = ttk.Button(buttons_frame, text='Remover')
