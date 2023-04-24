@@ -13,6 +13,7 @@ buttons_frame = Frame(root, padx=10)
 buttons_frame.grid(column=0, row=0)
 
 add_btn = ttk.Button(buttons_frame, text='Adicionar')
+add_btn['command'] = lambda: database.AddProduct(conn, treeview)
 add_btn.grid(column=0, row=0)
 
 alt_btn = ttk.Button(buttons_frame, text='Alterar')
@@ -26,12 +27,17 @@ rem_btn.grid(column=0, row=2)
 treeview_frame = Frame(root, padx=10)
 treeview_frame.grid(column=1, row=0)
 
-treeview = ttk.Treeview(treeview_frame, columns=('col1', 'col2'))
+treeview = ttk.Treeview(treeview_frame, columns=('col1', 'col2', 'col3'))
 treeview.grid(column=0, row=0)
 
-treeview.heading('#0', text='ID')
-treeview.heading('#1', text='Produto')
-treeview.heading('#2', text='Estoque')
+treeview.heading('#0', text='')
+treeview.column('#0', width=0, stretch=False)
+
+treeview.heading('#1', text='ID')
+treeview.heading('#2', text='Produto')
+treeview.heading('#3', text='Estoque')
+
+database.ReloadTreeview(conn, treeview)
 
 
 root.mainloop()
