@@ -39,8 +39,13 @@ treeview.heading('#0', text='')
 treeview.column('#0', width=0, stretch=False)
 
 treeview.heading('#1', text='ID')
+treeview.column('#1', width=50, anchor='center')
+
 treeview.heading('#2', text='Produto')
+treeview.column('#2', width=300, anchor='center')
+
 treeview.heading('#3', text='Estoque')
+treeview.column('#3', width=70, anchor='center')
 
 database.ReloadTreeview(conn, treeview)
 
