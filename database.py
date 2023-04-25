@@ -60,14 +60,14 @@ def AddProduct(conn, treeview):
     window = Toplevel(bg=bg_color, padx=50, pady=30)
     
     prodname_label = ttk.Label(window, text='Nome do Produto')
-    prodname_label.grid(column=0, row=0)
+    prodname_label.grid(column=0, row=0, sticky=W)
     
     prodname_var = StringVar()
     prodname_entry = ttk.Entry(window, textvariable=prodname_var)
     prodname_entry.grid(column=0, row=1, sticky=EW)
     
     prodstock_label = ttk.Label(window, text='Estoque')
-    prodstock_label.grid(column=0, row=2)
+    prodstock_label.grid(column=0, row=2, sticky=W)
     
     prodstock_var = StringVar()
     prodstock_entry = ttk.Entry(window, textvariable=prodstock_var)
