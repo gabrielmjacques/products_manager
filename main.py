@@ -6,10 +6,13 @@ import database
 conn = database.DBConnect()
 
 root = Tk()
+root.configure(background='#09456c')
 root.title('Product Manager')
 
+import style
+
 # Frame para botões
-buttons_frame = Frame(root, padx=10)
+buttons_frame = Frame(root)
 buttons_frame.grid(column=0, row=0)
 
 add_btn = ttk.Button(buttons_frame, text='Adicionar')
@@ -26,7 +29,7 @@ rem_btn.grid(column=0, row=2)
 
 
 # Frame da Treeview
-treeview_frame = Frame(root, padx=10)
+treeview_frame = Frame(root)
 treeview_frame.grid(column=1, row=0)
 
 treeview = ttk.Treeview(treeview_frame, columns=('col1', 'col2', 'col3'))

@@ -6,6 +6,8 @@ import mysql.connector
 configparser = ConfigParser()
 configparser.read('db_config.ini')
 
+bg_color = '#D7DAF0'
+
 def DBConnect():
     try:
         connector = mysql.connector.connect(
@@ -55,14 +57,14 @@ def AddProduct(conn, treeview):
         
         window.destroy()
     
-    window = Toplevel(padx=50, pady=30)
+    window = Toplevel(bg=bg_color, padx=50, pady=30)
     
     prodname_label = ttk.Label(window, text='Nome do Produto')
     prodname_label.grid(column=0, row=0)
     
     prodname_var = StringVar()
     prodname_entry = ttk.Entry(window, textvariable=prodname_var)
-    prodname_entry.grid(column=0, row=1)
+    prodname_entry.grid(column=0, row=1, sticky=EW)
     
     prodstock_label = ttk.Label(window, text='Estoque')
     prodstock_label.grid(column=0, row=2)
@@ -70,7 +72,7 @@ def AddProduct(conn, treeview):
     prodstock_var = StringVar()
     prodstock_entry = ttk.Entry(window, textvariable=prodstock_var)
     prodstock_entry.insert(0, 0)
-    prodstock_entry.grid(column=0, row=3)
+    prodstock_entry.grid(column=0, row=3, sticky=EW)
     
     add_btn = ttk.Button(window, text='Adicionar')
     add_btn['command'] = Add
@@ -91,10 +93,10 @@ def AltProduct(conn, treeview):
             ReloadTreeview(conn, treeview)
             window.destroy()
         
-        window = Toplevel(padx=50, pady=30)
+        window = Toplevel(bg=bg_color, padx=50, pady=30)
         
         prodname_label = ttk.Label(window, text='Nome do Produto')
-        prodname_label.grid(column=0, row=0)
+        prodname_label.grid(column=0, row=0, sticky=W)
         
         prodname_var = StringVar()
         prodname_entry = ttk.Entry(window, textvariable=prodname_var)
@@ -102,7 +104,7 @@ def AltProduct(conn, treeview):
         prodname_entry.grid(column=0, columnspan=2, row=1, sticky=EW)
         
         prodstock_label = ttk.Label(window, text='Estoque')
-        prodstock_label.grid(column=0, row=2)
+        prodstock_label.grid(column=0, row=2, sticky=W)
         
         prodstock_var = StringVar()
         prodstock_entry = ttk.Entry(window, textvariable=prodstock_var)
@@ -114,6 +116,7 @@ def AltProduct(conn, treeview):
         confirm_btn.grid(column=0, row=4)
         
         cancel_btn = ttk.Button(window, text='Cancelar')
+        cancel_btn['command'] = window.destroy
         cancel_btn.grid(column=1, row=4)
         
         ReloadTreeview(conn, treeview)
@@ -130,7 +133,7 @@ def RemProduct(conn, treeview):
             ReloadTreeview(conn, treeview)
             window.destroy()
         
-        window = Toplevel(padx=50, pady=30)
+        window = Toplevel(bg=bg_color, padx=50, pady=30)
         
         confirmation_label = ttk.Label(window, text= f'Tem Certeza que deseja remover {item_name} do sistema?')
         confirmation_label.grid(column=0, columnspan=2, row=0)
@@ -140,8 +143,8 @@ def RemProduct(conn, treeview):
         
         confirm_btn = ttk.Button(window, text='Confirmar')
         confirm_btn['command'] = Rem
-        confirm_btn.grid(column=0, row=2)
+        confirm_btn.grid(column=0, row=2, sticky=EW)
         
         cancel_btn = ttk.Button(window, text='Cancelar')
         cancel_btn['command'] = window.destroy
-        cancel_btn.grid(column=1, row=2)
+        cancel_btn.grid(column=1, row=2, sticky=EW)
